@@ -31,6 +31,10 @@ public class UserModel implements UserDetails {
         return List.of(new SimpleGrantedAuthority(role));
     }
 
+    @Override
+    public String getPassword() {
+        return password;
+    }
 
 
     @Override

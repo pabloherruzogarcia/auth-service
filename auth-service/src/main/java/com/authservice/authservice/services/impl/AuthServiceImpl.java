@@ -25,7 +25,8 @@ public class AuthServiceImpl implements AuthService {
         return Optional.of(userRequest)
                 .map(this::mapToEntity)
                 .map(userRepository::save)
-                .;
+                .map(userCreated -> jwtService.generateToken(userCreated.getId()))
+                .orElseThrow(() -> new RuntimeException("Error creating user"));
     }
 
     @Override

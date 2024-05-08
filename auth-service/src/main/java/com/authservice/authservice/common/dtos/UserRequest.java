@@ -12,5 +12,14 @@ import org.antlr.v4.runtime.misc.NotNull;
 public class UserRequest {
     @NotNull
     private String email;
+    @NotNull
     private String password;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

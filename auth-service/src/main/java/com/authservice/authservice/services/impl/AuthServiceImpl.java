@@ -30,12 +30,16 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public Object mapToEntity(UserRequest userRequest) {
-        return UserModel.builder()
+    public UserModel mapToEntity(UserRequest userRequest) {
+        /*return UserModel.builder()
                 .email(userRequest.getEmail())
                 .password(userRequest.getPassword())
                 .role("USER")
                 .build();
+
+         */
+        return UserModel.b
+
     }
 
 

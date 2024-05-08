@@ -31,16 +31,10 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UserModel mapToEntity(UserRequest userRequest) {
-        /*return UserModel.builder()
-                .email(userRequest.getEmail())
-                .password(userRequest.getPassword())
-                .role("USER")
-                .build();
-
-         */
-        return UserModel.b
-
+        return UserModel.builder()
+          .email(userRequest.getEmail())
+          .password(userRequest.getPassword())
+          .role("USER")
+          .build();
     }
-
-
 }

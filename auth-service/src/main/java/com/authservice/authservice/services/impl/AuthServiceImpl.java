@@ -7,6 +7,7 @@ import com.authservice.authservice.repositories.UserRepository;
 import com.authservice.authservice.services.AuthService;
 import com.authservice.authservice.services.JwtService;
 import org.springframework.stereotype.Service;
+import com.authservice.authservice.common.entities.UserModel;
 
 import java.util.Optional;
 
@@ -29,17 +30,13 @@ public class AuthServiceImpl implements AuthService {
                 .orElseThrow(() -> new RuntimeException("Error creating user"));
     }
 
-    @Override
+
     public UserModel mapToEntity(UserRequest userRequest) {
-        /*return UserModel.builder()
+        return UserModel.builder()
                 .email(userRequest.getEmail())
                 .password(userRequest.getPassword())
                 .role("USER")
                 .build();
-
-         */
-        return UserModel.b
-
     }
 
 

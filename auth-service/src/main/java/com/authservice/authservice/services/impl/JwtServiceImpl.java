@@ -6,9 +6,11 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
-
+import org.springframework.stereotype.Service;
 import java.util.Date;
 
+
+@Service
 public class JwtServiceImpl implements JwtService {
 
     private final String secretToken;
@@ -16,6 +18,7 @@ public class JwtServiceImpl implements JwtService {
     public JwtServiceImpl(@Value("${jwt.secret}") String secretToken) {
         this.secretToken = secretToken;
     }
+
     @Override
     public TokenResponse generateToken(Long userId){
         Date expirationDate = new Date(Long.MAX_VALUE);
@@ -31,6 +34,8 @@ public class JwtServiceImpl implements JwtService {
                 .accessToken(token)
                 .build();
     }
+
+
     @Override
     public Claims getClaims(String token){
         return Jwts.parserBuilder()
@@ -39,6 +44,8 @@ public class JwtServiceImpl implements JwtService {
                 .parseClaimsJws(token)
                 .getBody();
     }
+
+
     @Override
     public boolean isExpired(String token){
         try {
@@ -47,6 +54,8 @@ public class JwtServiceImpl implements JwtService {
             return false;
         }
     }
+
+
     @Override
     public Integer extractUserId(String token){
         try {

@@ -6,6 +6,8 @@ import com.authservice.authservice.common.entities.UserModel;
 import com.authservice.authservice.repositories.UserRepository;
 import com.authservice.authservice.services.AuthService;
 import com.authservice.authservice.services.JwtService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -38,6 +40,18 @@ public class AuthServiceImpl implements AuthService {
                 .build();
 
     }
+    @Override
+    public TokenResponse login(UserRequest userRequest){
+        TokenResponse token = null;
+        Optional<UserModel> usuario = userRepository.findByEmail(userRequest.getEmail());
+        if(usuario.isPresent())
+            token = jwtService.generateToken(usuario.get().getId());
+        else
+            token = new TokenResponse("");
+
+        return token;
+    }
+
 
 
 }

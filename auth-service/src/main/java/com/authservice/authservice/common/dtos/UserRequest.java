@@ -4,8 +4,8 @@ import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 
-@Builder
 @Getter
+@Builder
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,11 +15,4 @@ public class UserRequest {
     @NotNull
     private String password;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 }
